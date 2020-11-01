@@ -91,18 +91,7 @@ class MyProperties(PropertyGroup):
         maxlen=1024,
         )
         
-#    my_path: StringProperty(
-#        name = "Directory",
-#        description="Choose a directory:",
-#        default="",
-#        maxlen=1024,
-#        subtype='DIR_PATH'
-#        )
-
-    
-# ------------------------------------------------------------------------
-#    Property Examples
-# ------------------------------------------------------------------------
+-----------------------------------------------------------------
         
     '''
     my_int: IntProperty(
@@ -175,7 +164,7 @@ class NodeShareioLogin(Operator):
         pw = nodeshare.pw_string
         auth = HTTPBasicAuth(un, pw)
         try:
-            res = requests.post('http://localhost:5000/api/tokens', headers=headers, auth=auth)
+            res = requests.post('https://nodeshare.io/api/tokens', headers=headers, auth=auth)
             data = res.json()
             print(f'data')
             if data:
@@ -273,7 +262,7 @@ class SubmitDialogOperator(bpy.types.Operator):
             return {'CANCELLED'}
         headers = {"Accept": "application/json", "Authorization": f"Bearer {token}"}
         print(f"[  HEADERS  ]  {headers}")
-        res = requests.post('http://localhost:5000/api/submit', data=node, headers=headers)
+        res = requests.post('https://nodeshare.io/api/submit', data=node, headers=headers)
         data = res.json()
         if 'error' in data.keys(): 
             print(f"[  ERROR - REQUEST  ]  {data['message']}")
