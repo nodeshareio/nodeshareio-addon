@@ -91,7 +91,6 @@ class MyProperties(PropertyGroup):
         maxlen=1024,
         )
         
------------------------------------------------------------------
         
     '''
     my_int: IntProperty(
